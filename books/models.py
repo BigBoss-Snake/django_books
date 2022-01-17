@@ -6,7 +6,7 @@ class Authors(models.Model): ##Questions
     last_name = models.CharField(max_length=200)
         
     def __str__(self):
-        return self.first_name
+        return self.last_name
 
 
 class Books(models.Model): ##Choice
@@ -15,4 +15,4 @@ class Books(models.Model): ##Choice
     author_book = models.CharField(max_length=200)
     
     def __str__(self):
-        return self.author
+        return self.title
