@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from django.shortcuts import render
-from .models import Books
+from .models import Books, Authors
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.views import generic
 
@@ -42,13 +42,10 @@ def update(request):
 def create(request):
         if request.method == "POST":
             new_book = Books()
-            new_book.author = request.POST.get("author")
+            author_id = Authors.objects.get(last_name = request.POST.get("author"))
+            new_book.author = author_id
             new_book.title = request.POST.get("title")
             new_book.author_book = request.POST.get("author_book")
             new_book.save()  
-        return HttpResponseRedirect('')
-
-
-
-   
+        return HttpResponseRedirect('/')
 
