@@ -1,6 +1,13 @@
 from django.shortcuts import render
 from .models import Books
 from django.http import HttpResponse
+from django.views import generic
+
+class BookListView(generic.ListView):
+    model = Books
+    context_object_name = 'book_list'
+    template_name = 'index.html'
+
 
 def index(request):
 
