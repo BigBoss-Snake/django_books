@@ -1,19 +1,6 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Book List</h1>
 
-    {% if book_list %}
-    <ul>
 
-      {% for books in response %}
-      <li>
-        <b> Title: </b>{{ books.title }} 
-      </li>
-      {% endfor %}
-
-    </ul>
-    {% else %}
-      <p>There are no books in the library.</p>
-    {% endif %} 
 {% endblock %}

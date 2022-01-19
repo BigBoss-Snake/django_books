@@ -1,7 +1,6 @@
-from dataclasses import dataclass
 from django.shortcuts import render
 from .models import Books, Authors
-from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect
 from django.views import generic
 
 class BookListView(generic.ListView):
@@ -49,3 +48,8 @@ def create(request):
             new_book.save()  
         return HttpResponseRedirect('/')
 
+def delete(request, book_id):
+    book = Books.objects.get(id = book_id)
+    book.delete()
+    return HttpResponseRedirect('/')
+        
